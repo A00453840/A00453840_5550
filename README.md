@@ -33,7 +33,7 @@ Response:
 
 Body:
 ``` 
-{{
+{
    "hotel_name" : "Hotel1", 
    "checkin" : "2022-04-04", 
    "checkout": "2022-04-06", 
