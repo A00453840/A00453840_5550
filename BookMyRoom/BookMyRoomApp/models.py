@@ -1,4 +1,5 @@
 from django.db import models
+from .utils import create_new_ref_number
 
 
 class Hotels(models.Model):
@@ -25,9 +26,11 @@ class Reserve(models.Model):
     checkin = models.CharField(max_length=200, null=False)
     checkout = models.CharField(max_length=200, null=False)
     # guests_list = models.ForeignKey(Guest, on_delete=models.CASCADE)
-    #
-    # def __str__(self):
-    #     return self.name
+    confirmation_number = models.CharField(max_length=10,blank=True,editable=False,unique=True,
+                                           default=create_new_ref_number)
+
+    def __str__(self):
+        return self.confirmation_number
 
 
 class Guest(models.Model):

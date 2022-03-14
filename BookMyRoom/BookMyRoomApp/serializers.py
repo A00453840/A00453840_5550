@@ -10,10 +10,10 @@ class HotelSerializers(serializers.ModelSerializer):
         # fields = ['hotel_name','price','availability']
 
 
-class HotelNameSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Hotels
-        fields = ['hotel_name']
+# class HotelNameSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = Hotels
+#         fields = ['hotel_name']
 
 
 # class HotelListSerializers(serializers.ModelSerializer):
@@ -43,3 +43,9 @@ class ReservationsSerializers(serializers.ModelSerializer):
         model = Reserve
         fields = ['hotel_name', 'checkin', 'checkout', 'guests_list']
         # depth = 1
+
+
+class ConfirmationNumSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Reserve
+        fields = ['confirmation_number']

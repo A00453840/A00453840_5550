@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-from .serializers import HotelSerializers, ReservationsSerializers
+from .serializers import HotelSerializers, ReservationsSerializers, ConfirmationNumSerializers
 from .models import Hotels, Reserve
 
 
@@ -44,13 +44,12 @@ def reservationConfirmation(request):
     if request.method == 'POST':
         reserve_request = request.data
         reserve_request_data = ReservationsSerializers(data=reserve_request)
-        print(reserve_request_data)
+        # print(reserve_request_data)
         if reserve_request_data.is_valid():
             # print("Is Valid")
             recordId = reserve_request_data.save()
-            print(recordId.id)
-
-        return Response({"Message": "Added Successfully"})
+            # print(recordId)
+        return Response({"confirmation_number": recordId.confirmation_number})
 
 
 @api_view(['GET', 'POST'])
